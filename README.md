@@ -1,5 +1,5 @@
 # Playfair Cipher
-![]()
+![](https://github.com/unknownMarko/Playfair_Cipher/blob/main/screenshots/screenshot.png)
 
 Java project with GUI for Playfair Cipher Encryption/Decryption.
 
