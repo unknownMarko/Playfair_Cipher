@@ -1,0 +1,21 @@
+.background_pane {
+    -fx-background-color: #242331;
+}
+
+.textfields {
+    -fx-background-color: #2b2a36;
+    -fx-text-inner-color: #b59464;
+}
+
+.label {
+    -fx-text-fill: blue;
+}
+
+.radio-button .radio {
+    -fx-background-color: #cd8d5c;
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: #DDCA7D;
+
+}
