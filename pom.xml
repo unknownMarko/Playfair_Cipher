@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.playfaircipher.playfair_cipher/com.playfaircipher.playfair_cipher.HelloApplication
+                                com.playfaircipher.playfair_cipher/com.playfaircipher.playfair_cipher.PlayfairCipher
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
