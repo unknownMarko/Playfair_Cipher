@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.layout.GridPane;
 
 public class Controller {
 
@@ -28,6 +28,9 @@ public class Controller {
 
     @FXML
     private TextField field_output;
+
+    @FXML
+    private GridPane grid;
 
     @FXML
     private Label gridLabel_0;
@@ -103,5 +106,25 @@ public class Controller {
 
     @FXML
     private Label gridLabel_24;
+
+    void fillGrid() {
+        for (int i = 0; i < 25; i++) {
+            Label currentLabel = (Label) grid.lookup("#gridLabel_" + i);
+            String matrixData = PlayfairCipherLogic.parseKey(field_key.getText()+PlayfairCipherLogic.alphabetCzech);
+            if (currentLabel != null) {
+                currentLabel.setText(String.valueOf(matrixData.charAt(i)));
+            }
+        }    
+    }
+
+    @FXML
+    void handleInput() {
+        fillGrid();
+    }
+
+    @FXML
+    void handleKey() {
+        fillGrid();
+    }
 
 }

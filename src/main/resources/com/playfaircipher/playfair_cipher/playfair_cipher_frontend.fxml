@@ -42,7 +42,7 @@
                 <Font name="Roboto Mono Regular" size="19.0" />
             </font>
         </Text>
-        <TextField fx:id="field_input" layoutX="18.0" layoutY="104.0" prefHeight="59.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
+        <TextField fx:id="field_input" layoutX="18.0" layoutY="104.0" onKeyTyped="#handleInput" prefHeight="59.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
       <Text fill="#b88b4a" layoutX="100.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtered Text">
          <font>
             <Font name="Roboto Mono Regular" size="19.0" />
@@ -54,7 +54,7 @@
                 <Font name="Roboto Mono Regular" size="19.0" />
             </font>
         </Text>
-        <TextField fx:id="field_key" layoutX="368.0" layoutY="180.0" prefHeight="34.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
+        <TextField fx:id="field_key" layoutX="368.0" layoutY="180.0" onKeyTyped="#handleKey" prefHeight="34.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
         <Text fill="#b88b4a" layoutX="26.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Encrypted / Decrypted Text">
             <font>
                 <Font name="Roboto Mono Regular" size="19.0" />
@@ -82,12 +82,12 @@
             <Font name="Roboto Mono Regular" size="19.0" />
          </font>
       </Text>
-      <RadioButton layoutX="599.0" layoutY="103.0" mnemonicParsing="false" stylesheets="@playfair_cipher_frontend.css" text="SLOVAK" textFill="#b88b4a">
+      <RadioButton fx:id="radio_slovak_alp" layoutX="599.0" layoutY="103.0" mnemonicParsing="false" stylesheets="@playfair_cipher_frontend.css" text="SLOVAK" textFill="#b88b4a">
          <font>
             <Font name="Roboto Mono Medium" size="11.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="599.0" layoutY="123.0" mnemonicParsing="false" text="CZECH" textFill="#b88b4a">
+      <RadioButton fx:id="radio_czech_alp" layoutX="599.0" layoutY="123.0" mnemonicParsing="false" text="CZECH" textFill="#b88b4a">
          <font>
             <Font name="Roboto Mono Medium" size="11.0" />
          </font>
@@ -98,7 +98,7 @@
             <Font name="Roboto Mono Regular" size="19.0" />
          </font>
       </Text>
-      <GridPane gridLinesVisible="true" layoutX="449.0" layoutY="257.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #3b3a4a;">
+      <GridPane fx:id="grid" gridLinesVisible="true" layoutX="449.0" layoutY="257.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #3b3a4a;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
