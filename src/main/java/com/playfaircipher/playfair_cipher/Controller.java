@@ -1,11 +1,9 @@
 package com.playfaircipher.playfair_cipher;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 public class Controller {
@@ -17,58 +15,96 @@ public class Controller {
     private Button btn_encrypt;
 
     @FXML
-    private Label error_msg_alphabet;
-
-    @FXML
-    private Label error_msg_input;
-
-    @FXML
-    private Label error_msg_key_a;
-
-    @FXML
-    private Label error_msg_key_b;
-
-    @FXML
     private TextField field_alphabet;
 
     @FXML
     private TextField field_input;
 
     @FXML
-    private TextField field_input1;
+    private TextField field_input_filtered;
 
     @FXML
-    private TextField field_key_a;
+    private TextField field_key;
 
     @FXML
     private TextField field_output;
 
     @FXML
+    private Label gridLabel_0;
+
+    @FXML
+    private Label gridLabel_1;
+
+    @FXML
+    private Label gridLabel_10;
+
+    @FXML
+    private Label gridLabel_11;
+
+    @FXML
+    private Label gridLabel_12;
+
+    @FXML
+    private Label gridLabel_13;
+
+    @FXML
+    private Label gridLabel_14;
+
+    @FXML
+    private Label gridLabel_15;
+
+    @FXML
+    private Label gridLabel_16;
+
+    @FXML
+    private Label gridLabel_17;
+
+    @FXML
+    private Label gridLabel_18;
+
+    @FXML
+    private Label gridLabel_19;
+
+    @FXML
+    private Label gridLabel_2;
+
+    @FXML
+    private Label gridLabel_20;
+
+    @FXML
+    private Label gridLabel_21;
+
+    @FXML
+    private Label gridLabel_22;
+
+    @FXML
+    private Label gridLabel_23;
+
+    @FXML
+    private Label gridLabel_24;
+
+    @FXML
+    private Label gridLabel_3;
+
+    @FXML
+    private Label gridLabel_4;
+
+    @FXML
+    private Label gridLabel_5;
+
+    @FXML
+    private Label gridLabel_6;
+
+    @FXML
+    private Label gridLabel_7;
+
+    @FXML
+    private Label gridLabel_8;
+
+    @FXML
+    private Label gridLabel_9;
+
+    @FXML
     private Text text_input12;
-
-    @FXML
-    void handleCheckTextFieldKeyA(KeyEvent event) {
-
-    }
-
-    @FXML
-    void handleCheckTextInput(KeyEvent event) {
-
-    }
-
-    @FXML
-    void handleDecryptButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleEncryptButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleUpdateFieldAlphabet(KeyEvent event) {
-
-    }
 
 }
