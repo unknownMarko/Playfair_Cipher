@@ -36,6 +36,30 @@ public class Controller {
     private Label gridLabel_1;
 
     @FXML
+    private Label gridLabel_2;
+
+    @FXML
+    private Label gridLabel_3;
+
+    @FXML
+    private Label gridLabel_4;
+
+    @FXML
+    private Label gridLabel_5;
+
+    @FXML
+    private Label gridLabel_6;
+
+    @FXML
+    private Label gridLabel_7;
+
+    @FXML
+    private Label gridLabel_8;
+
+    @FXML
+    private Label gridLabel_9;
+
+    @FXML
     private Label gridLabel_10;
 
     @FXML
@@ -66,9 +90,6 @@ public class Controller {
     private Label gridLabel_19;
 
     @FXML
-    private Label gridLabel_2;
-
-    @FXML
     private Label gridLabel_20;
 
     @FXML
@@ -82,29 +103,5 @@ public class Controller {
 
     @FXML
     private Label gridLabel_24;
-
-    @FXML
-    private Label gridLabel_3;
-
-    @FXML
-    private Label gridLabel_4;
-
-    @FXML
-    private Label gridLabel_5;
-
-    @FXML
-    private Label gridLabel_6;
-
-    @FXML
-    private Label gridLabel_7;
-
-    @FXML
-    private Label gridLabel_8;
-
-    @FXML
-    private Label gridLabel_9;
-
-    @FXML
-    private Text text_input12;
 
 }
