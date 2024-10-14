@@ -7,8 +7,8 @@
     -fx-text-inner-color: #b59464;
 }
 
-.label {
-    -fx-text-fill: blue;
+.gridLabel {
+    -fx-text-fill: #e3a956;
 }
 
 .radio-button .radio {
@@ -17,5 +17,4 @@
 
 .radio-button:selected .radio {
     -fx-background-color: #DDCA7D;
-
 }
