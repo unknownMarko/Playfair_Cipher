@@ -3,8 +3,10 @@ package com.playfaircipher.playfair_cipher;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class PlayfairCipher extends Application {
@@ -15,18 +17,19 @@ public class PlayfairCipher extends Application {
         stage.setTitle("Playfair Cipher");
         stage.setResizable(false);
         stage.setScene(scene);
-//           File iconFile = new File("src/main/resources/icon/icon_200.png");
-//           if (iconFile.exists()) {
-//               stage.getIcons().add(new Image(iconFile.toURI().toString()));
-//           } else {
-//               System.err.println("Could not find icon!");
-//           }
+
+        File iconFile = new File("src/main/resources/icon/icon_200.png");
+        if (iconFile.exists()) {
+            stage.getIcons().add(new Image(iconFile.toURI().toString()));
+        } else {
+            System.err.println("Could not find icon!");
+        }
+
         stage.centerOnScreen();
         stage.show();
     }
 
     public static void main(String[] args) {
-        PlayfairCipherLogic.printArray();
         launch();
     }
 }
