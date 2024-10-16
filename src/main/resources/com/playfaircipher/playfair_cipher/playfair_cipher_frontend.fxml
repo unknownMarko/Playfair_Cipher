@@ -30,75 +30,75 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="480.0" maxWidth="700.0" minHeight="480.0" minWidth="700.0" prefHeight="480.0" prefWidth="700.0" styleClass="background_pane" stylesheets="@playfair_cipher_frontend.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.playfaircipher.playfair_cipher.Controller">
+<AnchorPane maxHeight="500.0" maxWidth="700.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" styleClass="background_pane" stylesheets="@playfair_cipher_frontend.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.playfaircipher.playfair_cipher.Controller">
     <children>
         <Text fill="#b88b4a" layoutX="201.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="&lt; Playfair Cipher &gt;" textAlignment="CENTER">
             <font>
                 <Font name="Roboto Mono Medium" size="26.0" />
             </font>
         </Text>
-        <Text fill="#b88b4a" layoutX="118.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER TEXT">
+        <Text fill="#b88b4a" layoutX="117.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER TEXT">
             <font>
                 <Font name="Roboto Mono Regular" size="19.0" />
             </font>
         </Text>
-        <TextField fx:id="field_input" layoutX="18.0" layoutY="104.0" onKeyTyped="#handleInput" prefHeight="59.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
-      <Text fill="#b88b4a" layoutX="100.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtered Text">
+        <TextField fx:id="field_input" layoutX="18.0" layoutY="97.0" onKeyTyped="#handleInput" prefHeight="59.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
+      <Text fill="#805013" layoutX="34.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtered Encryption Text" wrappingWidth="280.0">
          <font>
             <Font name="Roboto Mono Regular" size="19.0" />
          </font>
       </Text>
-      <TextField fx:id="field_input_filtered" layoutX="18.0" layoutY="215.0" prefHeight="59.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
-        <Text fill="#b88b4a" layoutX="483.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Keyword">
+      <TextField fx:id="field_input_filtered_encryption" editable="false" layoutX="18.0" layoutY="199.0" prefHeight="34.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
+        <Text fill="#b88b4a" layoutX="484.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Keyword">
             <font>
                 <Font name="Roboto Mono Regular" size="19.0" />
             </font>
         </Text>
-        <TextField fx:id="field_key" layoutX="368.0" layoutY="180.0" onKeyTyped="#handleKey" prefHeight="34.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
-        <Text fill="#b88b4a" layoutX="26.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Encrypted / Decrypted Text">
+        <TextField fx:id="field_key" layoutX="369.0" layoutY="204.0" onKeyTyped="#handleKey" prefHeight="34.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
+        <Text fill="#b88b4a" layoutX="26.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Encrypted / Decrypted Text">
             <font>
                 <Font name="Roboto Mono Regular" size="19.0" />
             </font>
         </Text>
-        <TextField fx:id="field_output" editable="false" layoutX="18.0" layoutY="335.0" prefHeight="59.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
-        <Button fx:id="btn_encrypt" layoutX="21.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleEncryptButton" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: #343342;" stylesheets="@playfair_cipher_frontend.css" text="ENCRYPT" textFill="#b88b4a">
+        <TextField fx:id="field_output" editable="false" layoutX="18.0" layoutY="360.0" prefHeight="59.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
+        <Button fx:id="btn_encrypt" layoutX="18.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleEncryptButton" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: #343342;" stylesheets="@playfair_cipher_frontend.css" text="ENCRYPT" textFill="#b88b4a">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="btn_decrypt" layoutX="183.0" layoutY="411.0" mnemonicParsing="false" onKeyPressed="#handleDecryptButton" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: #343342;" stylesheets="@playfair_cipher_frontend.css" text="DECRYPT" textFill="#b88b4a">
+        <Button fx:id="btn_decrypt" layoutX="185.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleDecryptButton" onKeyPressed="#handleDecryptButton" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: #343342;" stylesheets="@playfair_cipher_frontend.css" text="DECRYPT" textFill="#b88b4a">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-      <Text fill="#b88b4a" layoutX="427.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alphabet">
+      <Text fill="#b88b4a" layoutX="431.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alphabet">
          <font>
             <Font name="Roboto Mono Regular" size="19.0" />
          </font>
       </Text>
-      <TextField fx:id="field_alphabet" editable="false" layoutX="368.0" layoutY="104.0" prefHeight="34.0" prefWidth="209.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" text="Failed to load alphabet.." />
-      <Text fill="#9c845f45" layoutX="393.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="github.com/unknownMarko">
+      <TextField fx:id="field_alphabet" layoutX="368.0" layoutY="97.0" onKeyTyped="#handleAlphabetField" prefHeight="34.0" prefWidth="217.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" text="Failed to load alphabet.." />
+      <Text fill="#9c845f45" layoutX="457.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marko Adámek">
          <font>
             <Font name="Roboto Mono Regular" size="19.0" />
          </font>
       </Text>
-      <RadioButton fx:id="radio_slovak_alp" layoutX="599.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleRadioSlovak" selected="true" stylesheets="@playfair_cipher_frontend.css" text="SLOVAK" textFill="#b88b4a">
+      <RadioButton fx:id="radio_slovak_alp" layoutX="392.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleRadioSlovak" selected="true" stylesheets="@playfair_cipher_frontend.css" text="SLOVAK" textFill="#b88b4a">
          <font>
             <Font name="Roboto Mono Medium" size="11.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="radio_czech_alp" layoutX="599.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleRadioCzech" text="CZECH" textFill="#b88b4a">
+      <RadioButton fx:id="radio_czech_alp" layoutX="460.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleRadioCzech" text="CZECH" textFill="#b88b4a">
          <font>
             <Font name="Roboto Mono Medium" size="11.0" />
          </font>
       </RadioButton>
       <Line endX="-100.0" endY="404.0" layoutX="451.0" layoutY="58.0" startX="-100.0" stroke="#b88b4a" />
-      <Text fill="#b88b4a" layoutX="490.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matrix">
+      <Text fill="#b88b4a" layoutX="491.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matrix">
          <font>
             <Font name="Roboto Mono Regular" size="19.0" />
          </font>
       </Text>
-      <GridPane fx:id="grid" gridLinesVisible="true" layoutX="449.0" layoutY="257.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #3b3a4a;">
+      <GridPane fx:id="grid" gridLinesVisible="true" layoutX="450.0" layoutY="285.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #3b3a4a;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
@@ -241,5 +241,26 @@
             </Label>
          </children>
       </GridPane>
+      <RadioButton fx:id="radio_english_alp" layoutX="520.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleRadioEnglish" text="ENGLISH" textFill="#b88b4a">
+         <font>
+            <Font name="Roboto Mono Medium" size="11.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="radio_custom_alp" layoutX="593.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleRadioCustom" text="CUSTOM" textFill="#b88b4a">
+         <font>
+            <Font name="Roboto Mono Medium" size="11.0" />
+         </font>
+      </RadioButton>
+      <Text fill="#805013" layoutX="37.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtered Decryption Text" wrappingWidth="274.0">
+         <font>
+            <Font name="Roboto Mono Regular" size="19.0" />
+         </font>
+      </Text>
+      <TextField fx:id="field_input_filtered_decryption" editable="false" layoutX="18.0" layoutY="280.0" prefHeight="34.0" prefWidth="313.0" styleClass="textfields" stylesheets="@playfair_cipher_frontend.css" />
+      <Text fx:id="alphabetMissing" fill="#b88b4a" layoutX="600.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="? → ?" wrappingWidth="60.0">
+         <font>
+            <Font name="Roboto Mono Regular" size="16.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

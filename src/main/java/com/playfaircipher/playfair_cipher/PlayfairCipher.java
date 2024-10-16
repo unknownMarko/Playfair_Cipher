@@ -13,7 +13,7 @@ public class PlayfairCipher extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PlayfairCipher.class.getResource("playfair_cipher_frontend.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 700, 480);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
         stage.setTitle("Playfair Cipher");
         stage.setResizable(false);
         stage.setScene(scene);

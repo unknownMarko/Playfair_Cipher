@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 
 public class Controller {
 
@@ -23,7 +24,10 @@ public class Controller {
     private TextField field_input;
 
     @FXML
-    private TextField field_input_filtered;
+    private TextField field_input_filtered_encryption;
+
+    @FXML
+    private TextField field_input_filtered_decryption;
 
     @FXML
     private TextField field_key;
@@ -115,6 +119,15 @@ public class Controller {
     @FXML
     private RadioButton radio_slovak_alp;
 
+    @FXML
+    private RadioButton radio_english_alp;
+
+    @FXML
+    private RadioButton radio_custom_alp;
+
+    @FXML
+    private Text alphabetMissing;
+
 
     ToggleGroup radioToggle = new ToggleGroup();
 
@@ -123,31 +136,54 @@ public class Controller {
     void initialize() {
         radio_czech_alp.setToggleGroup(radioToggle);
         radio_slovak_alp.setToggleGroup(radioToggle);
+        radio_english_alp.setToggleGroup(radioToggle);
+        radio_custom_alp.setToggleGroup(radioToggle);
+
         field_alphabet.setText(PlayfairCipherLogic.alphabetSlovak);
-        fillGrid(field_alphabet.getText());
+        fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
+
+        alphabetMissing.setText(PlayfairCipherLogic.alphabetSlovakChange);
+
+        btn_encrypt.setDisable(true);
+        btn_decrypt.setDisable(true);
     }
 
-    //Spravuje zmenu jazyka (abecedy)
     @FXML
-    void handleRadioSlovak() {
+    void handleRadioSlovak(ActionEvent event) {
         field_alphabet.setText(PlayfairCipherLogic.alphabetSlovak);
-        fillGrid(field_alphabet.getText());
+        fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
+        alphabetMissing.setText(PlayfairCipherLogic.alphabetSlovakChange);
+        field_output.setText("");
     }
 
-    //Spravuje zmenu jazyka (abecedy)
     @FXML
-    void handleRadioCzech() {
+    void handleRadioCzech(ActionEvent event) {
         field_alphabet.setText(PlayfairCipherLogic.alphabetCzech);
-        fillGrid(field_alphabet.getText());
+        fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
+        alphabetMissing.setText(PlayfairCipherLogic.alphabetCzechChange);
+        field_output.setText("");
     }
 
-    void fillGrid(String alphabet) {
+    @FXML
+    void handleRadioEnglish(ActionEvent event) {
+        field_alphabet.setText(PlayfairCipherLogic.alphabetEnglish);
+        fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
+        alphabetMissing.setText(PlayfairCipherLogic.alphabetEnglishChange);
+        field_output.setText("");
+    }
+
+    @FXML
+    void handleRadioCustom(ActionEvent event) {
+        alphabetMissing.setText("? → ?");
+        fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
+        field_output.setText("");
+    }
+
+    void fillGrid(String alphabet, String key) {
         for (int i = 0; i < 25; i++) {
             Label currentLabel = (Label) grid.lookup("#gridLabel_" + i);
-            //TODO TEST THIS
-            String matrixData = PlayfairCipherLogic.parseKey(field_key.getText() + alphabet);
-            //TODO TEST THIS
-            matrix = PlayfairCipherLogic.updateMatrix(matrixData, matrix, alphabet);
+            String matrixData = PlayfairCipherLogic.parseKey(key + alphabet);
+            matrix = PlayfairCipherLogic.updateMatrix(matrixData, matrix, field_alphabet.getText());
             if (currentLabel != null) {
                 currentLabel.setText(String.valueOf(matrixData.charAt(i)));
             }
@@ -155,25 +191,105 @@ public class Controller {
     }
 
     @FXML
-    void handleDecryptButton(KeyEvent event) {
+    void handleEncryptButton(ActionEvent event) {
+        String[] input = field_input_filtered_encryption.getText().split(" ");
+        StringBuilder output = new StringBuilder(PlayfairCipherLogic.encrypt(field_input_filtered_encryption.getText().split(" "), matrix));
+        System.out.println(output);
 
+        for (int i = 5; i < output.length(); i += 6) {
+            output.insert(i, " ");
+        }
+
+        field_output.setText(output.toString());
     }
 
     @FXML
-    void handleEncryptButton(ActionEvent event) {
+    void handleDecryptButton(ActionEvent event) {
+        System.out.println("Clicked");
 
+        String inputFilteredText = field_input_filtered_decryption.getText();
+        String[] input = new String[inputFilteredText.length()/2];
+
+        for (int i = 0; i < inputFilteredText.length() - 1; i += 2) {
+            input[i / 2] = inputFilteredText.substring(i, i + 2);
+        }
+
+        String decryptedText = PlayfairCipherLogic.decrypt(input, matrix);
+
+        decryptedText = decryptedText.replaceAll("MEDZERA", " ");
+
+        for (int i = 0; i < FilterInput.numbers.length; i++) {
+            decryptedText = decryptedText.replaceAll(FilterInput.numbers[i][1], FilterInput.numbers[i][0]);
+        }
+
+        StringBuilder decryptedText1 = new StringBuilder(decryptedText);
+        for (int i = 0; i < decryptedText1.length()-2; i++) {
+            if (decryptedText1.charAt(i) == decryptedText1.charAt(i+2)) {
+                if (decryptedText1.charAt(i+1) == 'X') {
+                    decryptedText1.deleteCharAt(i+1);
+                }
+            }
+        }
+        if (decryptedText1.charAt(decryptedText1.length()-1) == 'Q') {
+            decryptedText1.deleteCharAt(decryptedText1.length()-1);
+        } else if (decryptedText1.charAt(decryptedText1.length()-1) == 'X') {
+            decryptedText1.deleteCharAt(decryptedText1.length()-1);
+        }
+
+        field_output.setText(decryptedText1.toString());
     }
 
     @FXML
     void handleInput(KeyEvent event) {
-        field_input_filtered.setText(FilterInput.formatInput(field_input.getText()));
+        String input = field_input.getText();
+        if (input.isEmpty()) {
+            btn_encrypt.setDisable(true);
+            btn_decrypt.setDisable(true);
+        } else {
+            if (radio_slovak_alp.isSelected()) {
+                input = input.toUpperCase().replaceAll("G","K");
+            }
+            if (radio_czech_alp.isSelected()) {
+                input = input.toUpperCase().replaceAll("W","V");
+            }
+            if (radio_english_alp.isSelected()) {
+                input = input.toUpperCase().replaceAll("J","I");
+            }
+            btn_encrypt.setDisable(false);
+            btn_decrypt.setDisable(false);
+        }
+
+        field_input_filtered_encryption.setText(FilterInput.formatInputTextEncrypt(input));
+        field_input_filtered_decryption.setText(FilterInput.formatInputTextDecrypt(input));
+    }
+
+    @FXML
+    void handleAlphabetField(KeyEvent event) {
+        String output = "";
+        if (field_alphabet.getText().length() == 25) {
+            //OK
+            btn_encrypt.setDisable(false);
+            btn_decrypt.setDisable(false);
+            field_key.setDisable(false);
+            field_alphabet.setText(field_alphabet.getText().toUpperCase());
+            fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
+        } else {
+            //NOT OK
+            field_key.setDisable(true);
+            btn_encrypt.setDisable(true);
+            btn_decrypt.setDisable(true);
+        }
+
+        radio_custom_alp.setSelected(true);
+        alphabetMissing.setText("? → ?");
     }
 
     @FXML
     void handleKey(KeyEvent event) {
-        fillGrid(field_alphabet.getText());
+        if (FilterInput.hasDuplicate(FilterInput.formatInputKey(field_key.getText()))) {
+            System.out.println("Key Found duplicate..");
+        }
+        fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
+
     }
-
-
-
 }
