@@ -250,6 +250,7 @@ public class Controller {
                 }
             }
         }
+        //Toto rieši mazanie X a Q pokial encrypt input bol lichy
         if (decryptedText1.charAt(decryptedText1.length()-1) == 'Q') {
             decryptedText1.deleteCharAt(decryptedText1.length()-1);
         } else if (decryptedText1.charAt(decryptedText1.length()-1) == 'X') {

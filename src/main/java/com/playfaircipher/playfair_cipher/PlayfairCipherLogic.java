@@ -32,16 +32,7 @@ public class PlayfairCipherLogic {
     static String alphabetEnglish = "ABCDEFGHIKLMNOPQRSTUVWXYZ";
     static String alphabetEnglishChange = "J → I";
 
-    static String alphabetFull = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    public static char alphabetFindMissing(String alphabet) {
-        for (int i = 0; i < alphabet.length(); i++) {
-            if (alphabet.indexOf(alphabetFull.charAt(i)) == -1) {
-                return alphabetFull.charAt(i);
-            }
-        }
-        return '0';
-    }
+//    static String alphabetFull = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     //Kontrola zhodnosti znakov v stringu (Matici)
     public static String parseKey(String key) {
@@ -72,13 +63,6 @@ public class PlayfairCipherLogic {
         return matrix;
     }
 
-    public static String stringMatrix(String key, char[][] matrix, String alphabet) {
-        StringBuilder tempString = new StringBuilder();
-        tempString.append(parseKey(key+alphabet));
-        tempString.delete(25, tempString.length());
-        return tempString.toString();
-    }
-
     //Vrati lokaciu znaku v matici. [Stlpec, Riadok]
     public static int[] matrixGetCharLocation(char target, char[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
@@ -89,11 +73,6 @@ public class PlayfairCipherLogic {
             }
         }
         return new int[]{-1,-1};
-    }
-
-    //Vrati znak na danej lokacii
-    public static char matrixGetCharByLocation(char[][] matrix, int locA, int locB) {
-        return matrix[locA][locB];
     }
 
     static int[][] matrixMoveCase(int[] firstCharLoc, int[] secondCharLoc, boolean encryption) {
@@ -152,11 +131,11 @@ public class PlayfairCipherLogic {
 
         StringBuilder output = new StringBuilder();
 
-        for (int i = 0; i < input.length; i++) {
-            int[] firstCharLoc = matrixGetCharLocation(input[i].charAt(0), matrix);
-            int[] secondCharLoc = matrixGetCharLocation(input[i].charAt(1), matrix);
+        for (String s : input) {
+            int[] firstCharLoc = matrixGetCharLocation(s.charAt(0), matrix);
+            int[] secondCharLoc = matrixGetCharLocation(s.charAt(1), matrix);
 
-            int[][]  newCharLoc = matrixMoveCase(firstCharLoc, secondCharLoc, true);
+            int[][] newCharLoc = matrixMoveCase(firstCharLoc, secondCharLoc, true);
 
             output.append(matrix[newCharLoc[0][0]][newCharLoc[0][1]]);
             output.append(matrix[newCharLoc[1][0]][newCharLoc[1][1]]);
@@ -167,9 +146,9 @@ public class PlayfairCipherLogic {
     public static String decrypt(String[] input, char[][] matrix) {
         StringBuilder output = new StringBuilder();
 
-        for (int i = 0; i < input.length; i++) {
-            int[] firstCharLoc = matrixGetCharLocation(input[i].charAt(0), matrix);
-            int[] secondCharLoc = matrixGetCharLocation(input[i].charAt(1), matrix);
+        for (String s : input) {
+            int[] firstCharLoc = matrixGetCharLocation(s.charAt(0), matrix);
+            int[] secondCharLoc = matrixGetCharLocation(s.charAt(1), matrix);
 
             int[][] newCharLoc = matrixMoveCase(firstCharLoc, secondCharLoc, false);
 
