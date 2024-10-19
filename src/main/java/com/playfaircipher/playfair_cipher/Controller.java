@@ -252,7 +252,6 @@ public class Controller {
             decryptedText1 = new StringBuilder(decryptedText1.toString().replaceAll(FilterInput.numbers[i][1], FilterInput.numbers[i][0]));
         }
 
-
         //Toto rieši mazanie X a Q pokial encrypt input bol lichy
         if (decryptedText1.charAt(decryptedText1.length()-1) == 'Q') {
             decryptedText1.deleteCharAt(decryptedText1.length()-1);
@@ -289,14 +288,15 @@ public class Controller {
 
     @FXML
     void handleAlphabetField(KeyEvent event) {
+        String inputAlphabet = field_alphabet.getText();
         String output = "";
-        if (field_alphabet.getText().length() == 25) {
+        if (inputAlphabet.length() == 25 && !FilterInput.hasDuplicate(inputAlphabet)) {
             //OK
             btn_encrypt.setDisable(false);
             btn_decrypt.setDisable(false);
             field_key.setDisable(false);
-            field_alphabet.setText(field_alphabet.getText().toUpperCase());
-            fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
+            field_alphabet.setText(inputAlphabet.toUpperCase());
+            fillGrid(inputAlphabet, FilterInput.formatInputKey(field_key.getText()));
         } else {
             //NOT OK
             field_key.setDisable(true);
@@ -312,8 +312,13 @@ public class Controller {
     void handleKey(KeyEvent event) {
         if (FilterInput.hasDuplicate(FilterInput.formatInputKey(field_key.getText()))) {
             System.out.println("Key Found duplicate..");
+            btn_encrypt.setDisable(true);
+            btn_decrypt.setDisable(true);
+        } else {
+            //TODO FINISH
+            btn_encrypt.setDisable(false);
+            btn_decrypt.setDisable(false);
+            fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
         }
-        fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
-
     }
 }
