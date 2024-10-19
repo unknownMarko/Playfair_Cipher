@@ -223,6 +223,7 @@ public class Controller {
         field_output.setText(output.toString());
     }
 
+    //Refactor needed, but it works
     @FXML
     void handleDecryptButton(ActionEvent event) {
         System.out.println("Clicked");
@@ -238,18 +239,20 @@ public class Controller {
 
         decryptedText = decryptedText.replaceAll("MEDZERA", " ");
 
-        for (int i = 0; i < FilterInput.numbers.length; i++) {
-            decryptedText = decryptedText.replaceAll(FilterInput.numbers[i][1], FilterInput.numbers[i][0]);
-        }
-
         StringBuilder decryptedText1 = new StringBuilder(decryptedText);
         for (int i = 0; i < decryptedText1.length()-2; i++) {
             if (decryptedText1.charAt(i) == decryptedText1.charAt(i+2)) {
-                if (decryptedText1.charAt(i+1) == 'X') {
+                if (decryptedText1.charAt(i+1) == 'X' || decryptedText1.charAt(i+1) == 'Q') {
                     decryptedText1.deleteCharAt(i+1);
                 }
             }
         }
+
+        for (int i = 0; i < FilterInput.numbers.length; i++) {
+            decryptedText1 = new StringBuilder(decryptedText1.toString().replaceAll(FilterInput.numbers[i][1], FilterInput.numbers[i][0]));
+        }
+
+
         //Toto rieši mazanie X a Q pokial encrypt input bol lichy
         if (decryptedText1.charAt(decryptedText1.length()-1) == 'Q') {
             decryptedText1.deleteCharAt(decryptedText1.length()-1);
