@@ -27,6 +27,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
+import static com.playfaircipher.playfair_cipher.FilterInput.formatInputTextDecrypt;
+
 public class Controller {
 
     char[][] matrix = new char[5][5];
@@ -282,12 +284,15 @@ public class Controller {
         }
 
         field_input_filtered_encryption.setText(FilterInput.formatInputTextEncrypt(input));
-        field_input_filtered_decryption.setText(FilterInput.formatInputTextDecrypt(input));
+        field_input_filtered_decryption.setText(formatInputTextDecrypt(input));
     }
 
     @FXML
     void handleAlphabetField(KeyEvent event) {
-        String inputAlphabet = field_alphabet.getText();
+        String inputAlphabet = formatInputTextDecrypt(field_alphabet.getText());
+        field_alphabet.setText(inputAlphabet);
+        field_alphabet.positionCaret(field_alphabet.getText().length());
+
         if (inputAlphabet.length() == 25 && !FilterInput.hasDuplicate(inputAlphabet)) {
             //OK
             btn_encrypt.setDisable(false);
