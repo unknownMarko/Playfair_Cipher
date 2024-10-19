@@ -212,7 +212,6 @@ public class Controller {
 
     @FXML
     void handleEncryptButton(ActionEvent event) {
-        String[] input = field_input_filtered_encryption.getText().split(" ");
         StringBuilder output = new StringBuilder(PlayfairCipherLogic.encrypt(field_input_filtered_encryption.getText().split(" "), matrix));
         System.out.println(output);
 
@@ -289,7 +288,6 @@ public class Controller {
     @FXML
     void handleAlphabetField(KeyEvent event) {
         String inputAlphabet = field_alphabet.getText();
-        String output = "";
         if (inputAlphabet.length() == 25 && !FilterInput.hasDuplicate(inputAlphabet)) {
             //OK
             btn_encrypt.setDisable(false);
@@ -315,7 +313,6 @@ public class Controller {
             btn_encrypt.setDisable(true);
             btn_decrypt.setDisable(true);
         } else {
-            //TODO FINISH
             btn_encrypt.setDisable(false);
             btn_decrypt.setDisable(false);
             fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));

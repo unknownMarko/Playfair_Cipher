@@ -60,13 +60,10 @@ public class FilterInput {
         return false;
     }
 
-
-
         public static String formatInputTextDecrypt(String inputString) {
         StringBuilder output = new StringBuilder();
 
         inputString = normalizer(inputString);
-//        inputString.replaceAll(" ", "");
 
         for (int i = 0; i < inputString.length(); i++) {
             char character = inputString.charAt(i);
@@ -147,7 +144,6 @@ public class FilterInput {
         return output.toString();
     }
 
-
     //Prida medzeri kazde dva chars
     public static String spacing(String inputString, int spacing) {
         StringBuilder output = new StringBuilder();
@@ -158,6 +154,4 @@ public class FilterInput {
         }
         return output.toString();
     }
-
-
 }
