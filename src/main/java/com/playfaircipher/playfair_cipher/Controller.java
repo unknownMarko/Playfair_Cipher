@@ -153,7 +153,7 @@ public class Controller {
 
     ToggleGroup radioToggle = new ToggleGroup();
 
-    //Uvodna funkcia pri zobrazeni GUI
+    //Uvodna funkcia pri zobrazeni GUIlty pleasures
     @FXML
     void initialize() {
         radio_czech_alp.setToggleGroup(radioToggle);
@@ -170,6 +170,7 @@ public class Controller {
         btn_decrypt.setDisable(true);
     }
 
+    // TOOOO SLOVENSKO NAšE
     @FXML
     void handleRadioSlovak(ActionEvent event) {
         field_alphabet.setText(PlayfairCipherLogic.alphabetSlovak);
@@ -178,6 +179,7 @@ public class Controller {
         field_output.setText("");
     }
 
+    // CZECH RADIO OSTRAVA MENTIONED 🦅🦅🦅🦅
     @FXML
     void handleRadioCzech(ActionEvent event) {
         field_alphabet.setText(PlayfairCipherLogic.alphabetCzech);
@@ -186,6 +188,7 @@ public class Controller {
         field_output.setText("");
     }
 
+    // rabota ne volk, walk - eto chodit 🐺
     @FXML
     void handleRadioEnglish(ActionEvent event) {
         field_alphabet.setText(PlayfairCipherLogic.alphabetEnglish);
@@ -200,7 +203,7 @@ public class Controller {
         fillGrid(field_alphabet.getText(), FilterInput.formatInputKey(field_key.getText()));
         field_output.setText("");
     }
-
+        // shalalallalalla
     void fillGrid(String alphabet, String key) {
         for (int i = 0; i < 25; i++) {
             Label currentLabel = (Label) grid.lookup("#gridLabel_" + i);
@@ -211,7 +214,7 @@ public class Controller {
             }
         }
     }
-
+        // afanana
     @FXML
     void handleEncryptButton(ActionEvent event) {
         StringBuilder output = new StringBuilder(PlayfairCipherLogic.encrypt(field_input_filtered_encryption.getText().split(" "), matrix));
@@ -224,7 +227,7 @@ public class Controller {
         field_output.setText(output.toString());
     }
 
-    //Refactor needed, but it works
+    //Refactor needed, but unlike Ukrainian and Slovak economics, it works
     @FXML
     void handleDecryptButton(ActionEvent event) {
         System.out.println("Clicked");
@@ -248,7 +251,7 @@ public class Controller {
                 }
             }
         }
-
+        // eeeee macarena
         for (int i = 0; i < FilterInput.numbers.length; i++) {
             decryptedText1 = new StringBuilder(decryptedText1.toString().replaceAll(FilterInput.numbers[i][1], FilterInput.numbers[i][0]));
         }
@@ -263,6 +266,7 @@ public class Controller {
         field_output.setText(decryptedText1.toString());
     }
 
+    // bailando bailando
     @FXML
     void handleInput(KeyEvent event) {
         String input = field_input.getText();
@@ -287,6 +291,7 @@ public class Controller {
         field_input_filtered_decryption.setText(formatInputTextDecrypt(input));
     }
 
+    // amigos adios adios esteloockepwjhfcôawoubvebvliaal
     @FXML
     void handleAlphabetField(KeyEvent event) {
         String inputAlphabet = formatInputTextDecrypt(field_alphabet.getText());
@@ -294,14 +299,14 @@ public class Controller {
         field_alphabet.positionCaret(field_alphabet.getText().length());
 
         if (inputAlphabet.length() == 25 && !FilterInput.hasDuplicate(inputAlphabet)) {
-            //OK
+            //OK BRO 😎😎😎😎😎😎
             btn_encrypt.setDisable(false);
             btn_decrypt.setDisable(false);
             field_key.setDisable(false);
             field_alphabet.setText(inputAlphabet.toUpperCase());
             fillGrid(inputAlphabet, FilterInput.formatInputKey(field_key.getText()));
         } else {
-            //NOT OK
+            //NOT OK 😓😥😥😥😥😥😭
             field_key.setDisable(true);
             btn_encrypt.setDisable(true);
             btn_decrypt.setDisable(true);
@@ -311,6 +316,7 @@ public class Controller {
         alphabetMissing.setText("? → ?");
     }
 
+    // instead of handling a key we are going to handle a weapon
     @FXML
     void handleKey(KeyEvent event) {
         if (FilterInput.hasDuplicate(FilterInput.formatInputKey(field_key.getText()))) {
